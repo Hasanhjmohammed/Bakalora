@@ -3,22 +3,20 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
-class QRViewExample extends StatefulWidget {
-  const QRViewExample({Key? key}) : super(key: key);
+class QRViewScreen extends StatefulWidget {
+  const QRViewScreen({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _QRViewExampleState();
 }
 
-class _QRViewExampleState extends State<QRViewExample> {
+class _QRViewExampleState extends State<QRViewScreen> {
   Barcode? result;
   QRViewController? controller;
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
-
-  // In order to get hot reload to work we need to pause the camera if the platform
-  // is android, or resume the camera if the platform is iOS.
   @override
   void reassemble() {
     super.reassemble();
@@ -40,13 +38,13 @@ setState(() {
     return Scaffold(
       body: Column(
         children: <Widget>[
-          Expanded(flex: 4, child:   QRView(
+          Expanded(flex: 3, child:   QRView(
             key: qrKey,
             onQRViewCreated: _onQRViewCreated,
             overlay: QrScannerOverlayShape(
                 borderColor: Colors.orange,
                 borderRadius: 10,
-                borderLength: 30,
+                borderLength: 40,
                 borderWidth: 10,
                 cutOutSize: scanArea,
               overlayColor: Color.fromRGBO(0, 0, 0, 0.9)
@@ -56,12 +54,41 @@ setState(() {
           )),
           Expanded(
             flex: 1,
-            child: Container(
-              color: Colors.orangeAccent,
-              child: Column(
+            child: BottomSheet(
+
+              onClosing: ()=>null,
+             // color: Colors.orange.withOpacity(0.9),
+             builder:(con)=> Column(
+               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('eeeeeeee'),
-                  Text('eeeeeeee'),
+                  Text('أدخل كلمة السر بحال تعطل الكميرا',style: TextStyle(fontSize: 20),),
+                SizedBox(height: Get.height*0.01,),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 10,left: 10,right: 10),
+                  child: TextFormField(
+                    textAlign: TextAlign.left,
+                      cursorColor:Colors.orange,
+                    style: TextStyle(
+
+                      fontSize: 20
+                    ),
+                    decoration: InputDecoration(
+
+                      hintText: 'Code_number',
+                      border:OutlineInputBorder() ,
+                        focusedBorder: OutlineInputBorder(
+
+                          borderRadius: BorderRadius.circular(20),
+                          borderSide: BorderSide(
+
+                            color: Colors.orange ,
+                            width: 2),
+                        ),
+
+                      filled: true
+                    ),
+                  ),
+                ),
                 ],
               ),
             ),
@@ -88,6 +115,4 @@ setState(() {
       });
     });
   }
-
-
 }

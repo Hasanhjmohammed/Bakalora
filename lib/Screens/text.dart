@@ -249,25 +249,26 @@ class _TextScreenState extends State<TestScreen> {
                       child: CustomButtom(
                           background :Colors.black12,
                           callback: () {
-                            setState(() {
-                              r = Colors.white;
-                              iconData=Icons.circle_outlined;
-                              r1 = Colors.white;
-                              iconData1=Icons.circle_outlined;
-                              if(id<Question.length-1)
-                              {   id++;
-                              print(id);
-                              }
-                              else
-                                id=0;
-                              check=false;
+                            // setState(() {
+                            //   r = Colors.white;
+                            //   iconData=Icons.circle_outlined;
+                            //   r1 = Colors.white;
+                            //   iconData1=Icons.circle_outlined;
+                            //   if(id<Question.length-1)
+                            //   {   id++;
+                            //   print(id);
+                            //   }
+                            //   else
+                            //     id=0;
+                            //   check=false;
+                            //
+                            // });
 
-                            });
 
+                              Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => const QRViewScreen(),
+                          ));
                           },
-                          //     Navigator.of(context).push(MaterialPageRoute(
-                          //   builder: (context) => const QRViewExample(),
-                          // )),
 
                           value: width,
                           child: InkWell(
