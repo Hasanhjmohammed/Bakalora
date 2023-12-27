@@ -1,7 +1,8 @@
+import 'package:bakalora/Screens/Auth/create_acount.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'Screens/welcome.dart';
-
+import 'Screens/Auth/sing_in.dart';
 
 void main() {
   runApp( MyApp());
@@ -19,6 +20,9 @@ class MyApp extends StatelessWidget {
      // locale: Get.,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        textTheme: TextTheme(
+
+        ),
         iconTheme: IconThemeData(
           color: Colors.orange
         ),
@@ -39,7 +43,7 @@ class MyApp extends StatelessWidget {
       // //  Locale('en','US'),
       //   Locale('ar','AE'),
       // ],
-      home: WelcomeScreen(),
+      home: CreateAccount(),
     );
   }
 }
