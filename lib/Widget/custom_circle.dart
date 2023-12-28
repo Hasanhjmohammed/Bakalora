@@ -21,7 +21,7 @@ class CustomCircl extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.all(8.0),
-          child: InkWell(
+          child: GestureDetector(
             onTap:callback,
             child: CircleAvatar(
               radius: value!/5,
@@ -35,7 +35,7 @@ class CustomCircl extends StatelessWidget {
         ),
         Text('$title',
           style: TextStyle(
-          fontSize: 20,
+          fontSize: value! * 0.05,
         ),
         ),
       ],

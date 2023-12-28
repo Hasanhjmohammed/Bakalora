@@ -51,7 +51,6 @@ class _TextScreenState extends State<TestScreen> {
           Expanded(
             flex: 23,
             child: Card(
-             // elevation: 9,
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5),
@@ -75,11 +74,12 @@ class _TextScreenState extends State<TestScreen> {
               ),
             ),
           ),
+          Spacer(),
           Expanded(
             flex: 35,
             child: Column(
               children: [
-                for(int i=0;i<5;i++)
+                for(int i=0;i<4;i++)
                 UnitNameapp(
                     icon:
                    iconData,
