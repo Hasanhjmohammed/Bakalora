@@ -30,7 +30,7 @@ List<Map<String,dynamic>>Brach_Sencess=[
   {
     'id':6,
     'title':'كيمياء',
-    'image':'images/img_2.png'
+    'image':'images/img_8.png'
   },
 ];
 
