@@ -45,7 +45,8 @@ class _SingInState extends State<SingIn> {
                       callback:()=>null,
                     ),
                 ),
-              ),),
+              ),
+              ),
               Expanded(
                 flex: 3,
                 child: GetBuilder<Password>(
@@ -69,7 +70,8 @@ class _SingInState extends State<SingIn> {
                             ),
                             Spacer(),
                             CustomButtom(
-                                callback: () => Navigator.of(context).push(MaterialPageRoute(builder: (_)=>WelcomeScreen())),
+                                callback: () => Navigator.of(context).push(
+                                    MaterialPageRoute(builder: (_)=>WelcomeScreen())),
                                 value: Get.width,
                                 child: Text('تسجيل دخول'),
                                 background: Colors.orange),
@@ -92,16 +94,18 @@ class _SingInState extends State<SingIn> {
                         color: Colors.white,
                         value: 'ليس لديك حساب ؟',
                         callback: ()=>null,
-
                       ),
                         CustomTextButton(
                           color: Colors.orange,
                           value: 'أنشأ واحداً',
-                          callback: ()=>Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_)=>CreateAccount())),
+                          callback: ()=>Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_)=>CreateAccount(),),
+                          )
+                          ,
                         ),
                       ],
                     ),
-                  ))
+                  ),
+              )
             ],
           ),
         ),

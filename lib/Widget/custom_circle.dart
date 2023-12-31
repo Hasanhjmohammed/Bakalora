@@ -26,7 +26,7 @@ class CustomCircl extends StatelessWidget {
             child: CircleAvatar(
               radius: value!/5,
               child: CircleAvatar(
-                radius:(value!/5)-5,
+                radius:(value!/5)-(value!/5*0.05),
                 backgroundImage: AssetImage('$path'),
               ),
               //  backgroundColor: Colors.orange,

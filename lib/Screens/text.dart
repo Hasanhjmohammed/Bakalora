@@ -1,3 +1,4 @@
+import 'package:bakalora/Controller/right_question.dart';
 import 'package:bakalora/Screens/ec.dart';
 import 'package:bakalora/Screens/scan_prcode.dart';
 import 'package:bakalora/Widget/custom_buttom.dart';
@@ -19,25 +20,20 @@ class TestScreen extends StatefulWidget {
 }
 
 class _TextScreenState extends State<TestScreen> {
+int ch=100;
 
   Color r = Colors.white;
   IconData iconData=Icons.circle_outlined;
   Color r1 = Colors.white;
   IconData iconData1=Icons.circle_outlined;
-  int  id=0;
-  bool check =false;
+  bool check =true;
+  RightQuestion rightQuestion=Get.put(RightQuestion());
+
+
+
    @override
   Widget build(BuildContext context) {
 
-    final  answers = Question[id]['test'] as Map;
-    // List<Map<String, Map<String, Object>>> Question = [
-    //   {
-    //     "id": {"1": '1'},
-    //     "title": {'1': '"  5+5-5 ما نتيجة العملية الاتية",'},
-    //     "test": {"1": "5", "2": "4"},
-    //     "right": {'1': '5'},
-    //   }
-    // ];
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
@@ -45,242 +41,168 @@ class _TextScreenState extends State<TestScreen> {
       //   backgroundColor: Colors.white,
       //   title: Text('اختبار العلوم',style: TextStyle(color: Colors.black),),
       // ),
-      body: Column(
-        children: [
-          SizedBox(height: height*0.05,),
-          Expanded(
-            flex: 23,
-            child: Card(
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
-                  border: Border.all(color: Colors.orange,width: 3),
-                ),
-                width: double.infinity,
-                height: double.infinity,
-                child: Center(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: SingleChildScrollView(
-                      child: Text('${Question[id]['title']}',
-                        textAlign: TextAlign.center,
-                        style:  TextStyle(
-                       fontSize: width * 0.05
-                      ),
+      body: GetBuilder<RightQuestion>(
+        builder: (con) {
+          print(1);
+          final  answers = Question[rightQuestion.questionNumber]['test'] as Map;
+          return Column(
+            children: [
+              SizedBox(height: height*0.05,),
+              Expanded(
+                flex: 23,
+                child: Card(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(5),
+                      border: Border.all(color: Colors.orange,width: 3),
+                    ),
+                    width: double.infinity,
+                    height: double.infinity,
+                    child: Center(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: SingleChildScrollView(
+                          child: Text('${Question[rightQuestion.questionNumber]['title']}',
+                            textAlign: TextAlign.center,
+                            style:  TextStyle(
+                           fontSize: width * 0.05
+                          ),
+                          ),
+                        ),
                       ),
                     ),
                   ),
                 ),
               ),
-            ),
-          ),
-          Spacer(),
-          Expanded(
-            flex: 35,
-            child: Column(
-              children: [
-                for(int i=0;i<4;i++)
-                UnitNameapp(
-                    icon:
-                   iconData,
-                    color:r,
-                    title: '${answers['1']}',
-                    callback: () => check==true?null:
-                      setState(() {
-                        if(answers['1']== Question[id]['right'])
-                        {  r = Colors.green;
-                        iconData=Icons.check_circle;
+              Spacer(),
+              Expanded(
+                flex: 35,
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      for(int i=0;i<answers.length;i++)
+                      UnitNameapp(
+                          backgroundcolor:ch==i?rightQuestion.check:rightQuestion.notcheck,
+                          icon:ch==i?rightQuestion.iconcheck:rightQuestion.iconnotcheck,
+                          color:Colors.white,
+                          wigth: width,
+                          index: 1,
+                          v: 0,
+                          title: '${answers['${i+1}']}',
+                          callback: () {
+                            for(int j=0;j<answers.length;j++)
+                              if(i==j)
+                             {
+                               ch=j;
 
-                      //  r1 = Colors.white;
-                      //  iconData1=Icons.circle_outlined;
-                        }
-                        else
-                        {
-                            r1 = Colors.green;
-                            iconData1=Icons.check_circle;
-                          r = Colors.red;
-                          iconData=Icons.cancel;
+                               rightQuestion.ChangColorCheck(Colors.orange,Icons.radio_button_checked_outlined);
+                             }
+                            else
+                              {
+                              }
+                            //  check=true;
+                          }),
 
-                        }
-                        check=true;
-                      }),
-                    wigth: width,
-                    index: 1,
-                    v: 0),
-                // UnitNameapp(
-                //     icon:
-                //      iconData1,
-                //     color: r1,
-                //
-                //     title: '${answers['2']}',
-                //     callback: () =>check==true?null: setState(() {
-                //       if( answers['2'] ==
-                //           Question[id]['right'])
-                //       {  r1 = Colors.green;
-                //       iconData1=Icons.check_circle;
-                //     //  r = Colors.red;
-                //      // iconData=Icons.cancel;
-                //       }
-                //       else
-                //       {
-                //        r = Colors.green;
-                //        iconData=Icons.check_circle;
-                //         r1 = Colors.red;
-                //         iconData1=Icons.cancel;
-                //       }
-                //       check=true;
-                //     }),
-                //     wigth: width,
-                //     index: 1,
-                //     v: 0),
-                // UnitNameapp(
-                //     icon:
-                //     iconData1,
-                //     color: r1,
-                //
-                //     title: '${answers['2']}',
-                //     callback: () =>check==true?null: setState(() {
-                //       if( answers['2'] ==
-                //           Question[id]['right'])
-                //       {  r1 = Colors.green;
-                //       iconData1=Icons.check_circle;
-                //         //  r = Colors.red;
-                //         // iconData=Icons.cancel;
-                //       }
-                //       else
-                //       {
-                //         r = Colors.green;
-                //         iconData=Icons.check_circle;
-                //         r1 = Colors.red;
-                //         iconData1=Icons.cancel;
-                //       }
-                //       check=true;
-                //     }),
-                //     wigth: width,
-                //     index: 1,
-                //     v: 0),
-                // UnitNameapp(
-                //     icon:
-                //     iconData1,
-                //     color: r1,
-                //
-                //     title: '${answers['2']}',
-                //     callback: () =>check==true?null: setState(() {
-                //       if( answers['2'] ==
-                //           Question[id]['right'])
-                //       {  r1 = Colors.green;
-                //       iconData1=Icons.check_circle;
-                //         //  r = Colors.red;
-                //         // iconData=Icons.cancel;
-                //       }
-                //       else
-                //       {
-                //         r = Colors.green;
-                //         iconData=Icons.check_circle;
-                //         r1 = Colors.red;
-                //         iconData1=Icons.cancel;
-                //       }
-                //       check=true;
-                //     }),
-                //     wigth: width,
-                //     index: 1,
-                //     v: 0),
-                // UnitNameapp(
-                //     icon:
-                //     iconData1,
-                //     color: r1,
-                //
-                //     title: '${answers['2']}',
-                //     callback: () =>check==true?null: setState(() {
-                //       if( answers['2'] ==
-                //           Question[id]['right'])
-                //       {  r1 = Colors.green;
-                //       iconData1=Icons.check_circle;
-                //         //  r = Colors.red;
-                //         // iconData=Icons.cancel;
-                //       }
-                //       else
-                //       {
-                //         r = Colors.green;
-                //         iconData=Icons.check_circle;
-                //         r1 = Colors.red;
-                //         iconData1=Icons.cancel;
-                //       }
-                //       check=true;
-                //     }),
-                //     wigth: width,
-                //     index: 1,
-                //     v: 0),
-                //  UnitNameapp(title: 'title', callback: ()=>null, wigth: width, index: 1, v: 0),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Expanded(
-                      flex: 1,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: InkWell(
+                    ],
+                  ),
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    flex: 1,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: InkWell(
 
-                          onTap: ()=>Get.bottomSheet(BottomSheet(
-                              enableDrag: false,
-                              showDragHandle: false,
-                              onClosing: ()=>null, builder: (con)=>Container(
+                        onTap: ()=>Get.bottomSheet(BottomSheet(
+                            enableDrag: false,
+                            showDragHandle: false,
+                            onClosing: ()=>null, builder: (con)=>Container(
 
-                              height: height/2,
-                              child: Center(child: Text('حل السؤال '))))),
-                          child: Container(
-                            decoration: BoxDecoration(
+                            height: height/2,
+                            child: Center(child: Text('حل السؤال '))))),
+                        child: Container(
+                          decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(3),
                               color: Colors.orange
-                            ),
-                           // padding: EdgeInsets.all(10),
-                       //   color: Colors.greenAccent,
+                          ),
+                          // padding: EdgeInsets.all(10),
+                          //   color: Colors.greenAccent,
                           width:width*0.27,
                           height: height*0.07,
 
                           child: Icon(Icons.info_outline_rounded,color: Colors.white,),
-                  ),
                         ),
                       ),
                     ),
-                 //   Icon(Icons.info_outline_rounded,size: 30,),
-                    Expanded(
-                      flex: 3,
-                      child: CustomButtom(
-                          background :Colors.black12,
-                          callback: () {
-                            // setState(() {
-                            //   r = Colors.white;
-                            //   iconData=Icons.circle_outlined;
-                            //   r1 = Colors.white;
-                            //   iconData1=Icons.circle_outlined;
-                            //   if(id<Question.length-1)
-                            //   {   id++;
-                            //   print(id);
-                            //   }
-                            //   else
-                            //     id=0;
-                            //   check=false;
-                            //
-                            // });
+                  ),
+                  //   Icon(Icons.info_outline_rounded,size: 30,),
+                  Expanded(
+                    flex: 3,
+                    child: CustomButtom(
+                        background :Colors.black12,
+                        callback: () {
 
+                         if(check==true)
+                           {
+                             print('llllllllll');
+                             if(answers['${ch+1}']==Question[rightQuestion.questionNumber]['right'])
+                           {
+                             print('jjjjjjj');
+                             rightQuestion.ChangColorCheck(Colors.green, Icons.check_circle);
+                           }
+                           else
+                           {
+                             print('aaaaa');
+                             for(int i=0;i<answers.length;i++)
+                             {
+                               if(answers['${i+1}']==Question[rightQuestion.questionNumber]['right'])
+                               {
+                                 print('kkkkk');
+                                 ch=i;
+                                 rightQuestion.Right();
+                               }
+                             }
+                           }
+                           print(ch);
+                           check=false;
+                           }
+                         else
 
-                              Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => const QRViewScreen(),
-                          ));
-                          },
+                           {
+                             if(rightQuestion.questionNumber<Question.length-1)
+                             {
+                               rightQuestion.Reset();
+                               rightQuestion.QuestionNumber();}
+                             else
+                             {
 
-                          value: width,
-                          child: InkWell(
+                               showDialog(context: context, builder: (c)=>AlertDialog(
+                                 title: Text('لقد وصلت الى النهاية'),
+                               ),
+                               );
+                             }
+                             check=true;
+                           }
 
-                              child: Icon(Icons.arrow_back,color: Colors.orange,size: 50,))),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ],
+                        //  rightQuestion.Reset();
+                          // Navigator.of(context).push(MaterialPageRoute(
+                          //   builder: (context) => const QRViewScreen(),
+                          // ));
+                        },
+
+                        value: width,
+                        child: InkWell(
+
+                            child: Icon(Icons.arrow_back,color: Colors.orange,size: 50,))),
+                  ),
+                ],
+              ),
+            ],
+          );
+        }
       ),
     );
   }

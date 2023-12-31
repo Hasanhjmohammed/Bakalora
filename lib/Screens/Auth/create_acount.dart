@@ -20,7 +20,7 @@ class _CreateAccountState extends State<CreateAccount> {
 
   @override
   Widget build(BuildContext context) {
-
+    double width=MediaQuery.of(context).size.width;
 
     return Scaffold(
 
@@ -68,7 +68,7 @@ class _CreateAccountState extends State<CreateAccount> {
                         ),
                               Spacer(),
                         CustomButtom(callback: ()=>Navigator.of(context).push(MaterialPageRoute(builder: (_)=>WelcomeScreen())),
-                            value: Get.width, child: Text('إنشأ'), background: Colors.orange),
+                            value:width, child: Text('إنشأ'), background: Colors.orange),
                       ],
                     ),
                   ),

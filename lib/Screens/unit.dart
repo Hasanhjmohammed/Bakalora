@@ -39,6 +39,7 @@ anim=true;
             child: ListView.builder(
               itemCount: widget.sub!.length,
               itemBuilder: (con, index) =>UnitNameapp(
+                backgroundcolor :null,
                      color: Colors.orange,
                   wigth:width,
                 v:anim?0:width,

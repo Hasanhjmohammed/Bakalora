@@ -9,14 +9,18 @@ class UnitNameapp extends StatelessWidget {
   double? v;
   IconData ?icon;
   Color ?color ;
+  Color ?backgroundcolor ;
 
-   UnitNameapp({@required this.title,
+   UnitNameapp({
+     @required this.title,
      @required this.callback,
      @required this.wigth,
      @required this.index,
      @required this.v,
      @required this.icon,
      @required this.color,
+     @required this.backgroundcolor,
+
    });
 
   @override
@@ -32,11 +36,12 @@ class UnitNameapp extends StatelessWidget {
             transform: Matrix4.translationValues(v!, 0, 0),
             decoration: BoxDecoration(
               //  color: Colors.orange,
-                border: Border.all(color: color!)
+                border: Border.all(color:color!)
             ),
             child: ListTile(
              // style:  Li
-              leading:Icon(icon,color: color,),
+              tileColor: backgroundcolor,
+              leading:Icon(icon,color: Colors.white,),
               title: Text('$title'),
             ),
           ),
