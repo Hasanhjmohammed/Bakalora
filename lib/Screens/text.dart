@@ -1,14 +1,10 @@
 import 'package:bakalora/Controller/right_question.dart';
-import 'package:bakalora/Screens/ec.dart';
-import 'package:bakalora/Screens/scan_prcode.dart';
+
 import 'package:bakalora/Widget/custom_buttom.dart';
 import 'package:bakalora/Widget/unit_name.dart';
 import 'package:flutter/material.dart';
 import 'package:bakalora/Constant/questionlist.dart';
-import 'dart:developer';
-import 'dart:io';
 
-import 'package:get/get.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
