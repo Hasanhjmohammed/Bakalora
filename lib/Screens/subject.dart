@@ -1,7 +1,9 @@
 import 'package:bakalora/Constant/Branch.dart';
 import 'package:bakalora/Constant/Unites.dart';
 import 'package:bakalora/Screens/unit.dart';
+import 'package:bakalora/Widget/Custom_appBar.dart';
 import 'package:bakalora/Widget/custom_circle.dart';
+import 'package:bakalora/Widget/custom_drawer.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import 'package:flutter/material.dart';
@@ -20,10 +22,11 @@ class _SubjectScreenState extends State<SubjectScreen> {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
-      appBar: AppBar(),
+      endDrawer: CustomDrawer(),
+      appBar: CustomAppBar(),
       body: Container(
         child: Padding(
-          padding: const EdgeInsets.only(top: 8, right: 8, left: 8),
+          padding: const EdgeInsets.only(top: 8, right: 8, left: 8,bottom: 30),
           child: Card(
             child: AnimationLimiter(
               child: GridView.builder(

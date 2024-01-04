@@ -1,8 +1,7 @@
-import 'package:bakalora/Screens/Auth/create_acount.dart';
+
 import 'package:bakalora/Screens/text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'Screens/welcome.dart';
 import 'Screens/Auth/sing_in.dart';
 
 void main() {
@@ -23,7 +22,7 @@ class MyApp extends StatelessWidget {
         textTheme: TextTheme(
         ),
         iconTheme: IconThemeData(
-          color: Colors.orange
+          color: Colors.orange,
         ),
         buttonTheme: ButtonThemeData(
           buttonColor: Colors.orange,
@@ -31,7 +30,12 @@ class MyApp extends StatelessWidget {
          primaryColorDark: Colors.orange,
          primarySwatch: Colors.orange,
        colorScheme: ColorScheme.dark(
-           primary: Colors.orange),
+           onSurface:Colors.orange,
+         error: Colors.deepOrange,
+
+           primary: Colors.orange
+
+       ),
       ),
       title: 'Bakalora',
       // localizationsDelegates: const [
@@ -43,7 +47,7 @@ class MyApp extends StatelessWidget {
       // //  Locale('en','US'),
       //   Locale('ar','AE'),
       // ],
-      home: SingIn(),
+      home: TestScreen(),
     );
   }
 }

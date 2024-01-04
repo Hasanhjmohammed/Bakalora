@@ -24,7 +24,7 @@ class ContainerText extends StatelessWidget {
               child: Text('$value',
                 textAlign: TextAlign.center,
                 style:  TextStyle(
-                    fontSize: width
+                    fontSize:  width! * 0.05
                 ),
               ),
             ),

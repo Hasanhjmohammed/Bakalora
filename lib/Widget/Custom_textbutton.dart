@@ -4,9 +4,9 @@ class CustomTextButton extends StatelessWidget {
   Color ?color;
   VoidCallback ?callback;
    CustomTextButton({
-     @override this.value,
-     @override this.color,
-     @override this.callback,
+     @required this.value,
+     @required this.color,
+     @required this.callback,
    });
 
   @override

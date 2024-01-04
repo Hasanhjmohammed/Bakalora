@@ -5,46 +5,50 @@ class CustomTextField extends StatelessWidget {
   String ?hintText;
   String ?inputtext;
   VoidCallback ?hit;
-
-   CustomTextField({@override this.hintText,
-  @override this.inputtext,
-     @override this.hit
-
+  TextEditingController ?value=TextEditingController();
+    String? Function(String?) vali;
+   CustomTextField({@required this.hintText,
+  @required this.inputtext,
+     @required this.value,
+     @required this.hit,
+     required this.vali,
    }
   );
 
   @override
   Widget build(BuildContext context) {
-
     Password password = Get.find();
     return TextFormField(
+      controller: value,
+      validator: vali,
             obscureText:inputtext!='h'? false:password.password,
       cursorColor: Colors.orange,
        // autofocus: false,
         decoration: InputDecoration(
-
-         // labelText: 'ddddddddd',
           suffix:inputtext!='h'?null: IconButton(
-            icon: Icon(Icons.remove_red_eye_outlined,color: Colors.orange,),
+            icon: Icon(password.password?Icons.remove_red_eye_outlined:Icons.visibility_off_outlined,color: Colors.orange,),
             onPressed: hit,
           ),
           hintText: '$hintText',
-          border: UnderlineInputBorder(
+          border: const UnderlineInputBorder(
               borderSide: BorderSide(color: Colors.orange)
           ),
-          focusedBorder:    UnderlineInputBorder(
+          focusedBorder:   const  UnderlineInputBorder(
             borderSide: BorderSide(
                 width: 2,
                 color: Colors.orange),
           ),
-          enabledBorder:  UnderlineInputBorder(
+          enabledBorder:  const UnderlineInputBorder(
               borderSide: BorderSide(color: Colors.orange)
           ),
-          disabledBorder:  UnderlineInputBorder(
+          disabledBorder:  const UnderlineInputBorder(
             borderSide: BorderSide(color: Colors.orange),
           ),
+          errorBorder: const UnderlineInputBorder(
+            borderSide: BorderSide(color: Colors.deepOrange),
+          ),
         ),
-      );
 
+      );
   }
 }

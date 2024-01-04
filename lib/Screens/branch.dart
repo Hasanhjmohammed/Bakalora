@@ -1,6 +1,8 @@
 import 'package:bakalora/Constant/Branch.dart';
 import 'package:bakalora/Screens/subject.dart';
+import 'package:bakalora/Widget/Custom_appBar.dart';
 import 'package:bakalora/Widget/custom_circle.dart';
+import 'package:bakalora/Widget/custom_drawer.dart';
 import 'package:flutter/material.dart';
 
 class BranchScreen extends StatefulWidget {
@@ -19,11 +21,8 @@ class _BranchScreenState extends State<BranchScreen> {
     double height=MediaQuery.of(context).size.height;
     double width=MediaQuery.of(context).size.width;
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-      //  title:Text('محمد سيد الكونين'),
-      ),
+     endDrawer: CustomDrawer(),
+      appBar: CustomAppBar(),
       body: Center(
         child: Container(
           height: height/3,

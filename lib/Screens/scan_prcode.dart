@@ -36,6 +36,7 @@ setState(() {
         ? 150.0
         : 300.0;
     return Scaffold(
+
       body: Column(
         children: <Widget>[
           Expanded(flex: 3, child:   QRView(
