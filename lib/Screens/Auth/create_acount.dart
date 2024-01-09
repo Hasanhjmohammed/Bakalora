@@ -32,11 +32,11 @@ class _CreateAccountState extends State<CreateAccount> {
           child: Column(
             children: [
               Expanded(
-                flex: 2,
+                flex: 1,
                 child: Container(
                   child: CustomCircl(
                     path: 'assest/images/img_5.png',
-                    value: Get.height / 4,
+                    value: Get.height / 5.5,
                     title: '',
                     callback: () => null,
                   ),
@@ -52,7 +52,7 @@ class _CreateAccountState extends State<CreateAccount> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        //   Spacer(),
+                        Spacer(),
                         CustomTextField(
                           value: name,
                           vali: (String? text) {

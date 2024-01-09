@@ -1,18 +1,13 @@
-import 'dart:ffi';
 
-import 'package:bakalora/Constant/styletext.dart';
 import 'package:bakalora/Controller/right_question.dart';
 import 'package:bakalora/Widget/container_text.dart';
 import 'package:bakalora/Widget/custom_alertDialog.dart';
-
 import 'package:bakalora/Widget/custom_buttom.dart';
 import 'package:bakalora/Widget/custom_info.dart';
 import 'package:bakalora/Widget/unit_name.dart';
 import 'package:flutter/material.dart';
 import 'package:bakalora/Constant/questionlist.dart';
-
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class TestScreen extends StatefulWidget {

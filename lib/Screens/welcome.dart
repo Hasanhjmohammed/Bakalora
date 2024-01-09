@@ -34,7 +34,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 background: Colors.orange,
                 value:width,callback:()=>Navigator.of(context).push(
                 MaterialPageRoute(builder: (con)=>BranchScreen(),),),
-            child:Text('ابدأ',style: Theme.of(context).textTheme.headlineMedium,)
+            child:Text('إبدأ',style: TextStyle(color: Colors.white,fontSize: 30))
             ),
           ],
         ),
