@@ -1,5 +1,5 @@
-import 'package:bakalora/Screens/scan_prcode.dart';
-import 'package:bakalora/Screens/text.dart';
+
+import 'package:bakalora/Screens/lessons.dart';
 import 'package:bakalora/Widget/Custom_appBar.dart';
 import 'package:bakalora/Widget/custom_buttom.dart';
 import 'package:bakalora/Widget/custom_drawer.dart';
@@ -19,7 +19,7 @@ class _UnitScreenState extends State<UnitScreenapp> {
     // TODO: implement initState
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       setState(() {
-anim=true;
+         anim=true;
       });
     });
   }
@@ -29,37 +29,43 @@ anim=true;
     double height=MediaQuery.of(context).size.height;
     double width=MediaQuery.of(context).size.width;
     return Scaffold(
-      endDrawer: CustomDrawer(),
-      appBar: CustomAppBar(),
+      endDrawer: CustomDrawer(context),
+      appBar: CustomAppBar('الوحدات'),
       body: Container(
         child:Padding(
-          padding:  EdgeInsets.only(bottom: 30,top: 8,left: 8,right: 8),
+          padding: EdgeInsets.only(bottom: 30,top: 8,left: 8,right: 8),
           child: Card(
             child: ListView.builder(
               itemCount: widget.sub!.length,
               itemBuilder: (con, index) =>UnitNameapp(
+                title: '${widget.sub![index]['title']}',
+                icon: index %2==0? Icons.lock:Icons.school,
                 backgroundcolor :null,
                      color: Colors.orange,
-                  wigth:width,
-                 v:anim?0:width,
-                index:index,
-                callback: ()=>
+                     wigth:width,
+                     v:anim?0:width,
+                     index:index,
+                     callback: ()=>index %2==0?
                     showDialog(context: context, builder:(co)=> AlertDialog(
-                  title: Text('امسح الكود الخاص ',textAlign: TextAlign.center,),
-                  content: CustomButtom(
+                    title: Text('امسح الكود الخاص ',textAlign: TextAlign.center,),
+                    content: CustomButtom(
                     background: Colors.orange,
                     callback: (){
                       Navigator.of(co).pop();
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => const QRViewScreen(),
+                          builder: (context) => LessonScreen(),
                         ),
                       );
-                    },
-                    value: width/1.5, child: Icon(Icons.border_bottom),),
+                     },
+                     value: width/1.5, child: Icon(Icons.border_bottom),
+                    ),
                  ),
-                ),
-                title: '${widget.sub![index]['title']}',
+                ): Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => LessonScreen(),
+              ),
+              ),
               ),
             ),
           ),

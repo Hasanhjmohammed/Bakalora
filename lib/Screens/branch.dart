@@ -21,8 +21,8 @@ class _BranchScreenState extends State<BranchScreen> {
     double height=MediaQuery.of(context).size.height;
     double width=MediaQuery.of(context).size.width;
     return Scaffold(
-     endDrawer: CustomDrawer(),
-      appBar: CustomAppBar(),
+     endDrawer: CustomDrawer(context),
+      appBar: CustomAppBar(''),
       body: Center(
         child: Container(
           height: height/3,
@@ -33,14 +33,14 @@ class _BranchScreenState extends State<BranchScreen> {
                 Expanded(
                   flex: 1,
                   child: CustomCircl(
-                    path: 'images/img.png',
+                    path: 'assest/images/img.png',
                     value: height/2,title: 'أدبي',callback: ()=>Navigator.of(context).push(
                       MaterialPageRoute(builder: (con)=>SubjectScreen(sub:Brach_Lib))),),
                 ),
                 Expanded(
                   flex: 1,
                   child: CustomCircl(
-                    path: 'images/img_1.png',
+                    path: 'assest/images/img_1.png',
                     value:  height/2,
                     title: 'علمي',callback: ()=>Navigator.of(context).push(
                       MaterialPageRoute(builder: (con)=>SubjectScreen(sub: Brach_Sencess,))),),

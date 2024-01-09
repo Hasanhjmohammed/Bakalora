@@ -1,4 +1,3 @@
-
 import 'package:bakalora/Screens/branch.dart';
 import 'package:bakalora/Widget/Custom_appBar.dart';
 import 'package:bakalora/Widget/custom_circle.dart';
@@ -18,15 +17,15 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     double height=MediaQuery.of(context).size.height;
     double width=MediaQuery.of(context).size.width;
     return Scaffold(
-     endDrawer: CustomDrawer(),
-      appBar: CustomAppBar(),
+     endDrawer: CustomDrawer(context),
+      appBar: CustomAppBar(''),
       body: Center(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             CustomCircl(
-              path: 'images/img_5.png',
+              path: 'assest/images/img_5.png',
               value: height, title: '',
             callback:()=> Navigator.of(context).push(
                 MaterialPageRoute(builder: (con)=>BranchScreen())),
@@ -34,8 +33,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             CustomButtom(
                 background: Colors.orange,
                 value:width,callback:()=>Navigator.of(context).push(
-                MaterialPageRoute(builder: (con)=>BranchScreen())),
-            child:Text('ابدأ')
+                MaterialPageRoute(builder: (con)=>BranchScreen(),),),
+            child:Text('ابدأ',style: Theme.of(context).textTheme.headlineMedium,)
             ),
           ],
         ),

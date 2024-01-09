@@ -16,7 +16,7 @@ class SingIn extends StatefulWidget {
 }
 
 class _SingInState extends State<SingIn> {
-  Password password = Get.put(Password());
+
   @override
   void initState() {
     // TODO: implement initState
@@ -25,6 +25,7 @@ class _SingInState extends State<SingIn> {
 
   @override
   Widget build(BuildContext context) {
+    Password password = Get.put(Password());
     GlobalKey<FormState> globalKey=GlobalKey<FormState>();
     TextEditingController name=TextEditingController();
     TextEditingController pass=TextEditingController();
@@ -41,8 +42,8 @@ class _SingInState extends State<SingIn> {
                 child: Container(
                   child: Container(
                     child:   CustomCircl(
-                      path: 'images/img_5.png',
-                      value: Get.height/3, title: '',
+                      path: 'assest/images/img_5.png',
+                      value: Get.height/3.5, title: '',
 
                       callback:()=>null,
                     ),
@@ -98,7 +99,9 @@ class _SingInState extends State<SingIn> {
                                     return null;
                                 } ,
                                 value: Get.width,
-                                child: Text('تسجيل دخول'),
+                                child: Text('تسجيل الدخول',style: TextStyle(
+                                    fontSize: 25,
+                                    color: Colors.white,fontWeight: FontWeight.w200),),
                                 background: Colors.orange),
                             Spacer(),
                           ],

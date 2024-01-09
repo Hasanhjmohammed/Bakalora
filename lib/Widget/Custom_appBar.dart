@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-AppBar CustomAppBar() {
+AppBar CustomAppBar(String title) {
   return AppBar(
-    title: Text('اختبار'),
+    title: Text('$title'),
     centerTitle: true,
     leading: Container(),
     elevation: 0,

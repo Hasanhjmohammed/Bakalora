@@ -33,7 +33,7 @@ class CustomCircl extends StatelessWidget {
             ),
           ),
         ),
-        Text('$title',
+        title==''?Container():Text('$title',
           style: TextStyle(
           fontSize: value! * 0.05,
         ),

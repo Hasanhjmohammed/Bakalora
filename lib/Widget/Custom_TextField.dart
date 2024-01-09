@@ -19,12 +19,16 @@ class CustomTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     Password password = Get.find();
     return TextFormField(
+      style: TextStyle(
+        fontSize: 20
+      ),
       controller: value,
       validator: vali,
             obscureText:inputtext!='h'? false:password.password,
       cursorColor: Colors.orange,
        // autofocus: false,
         decoration: InputDecoration(
+
           suffix:inputtext!='h'?null: IconButton(
             icon: Icon(password.password?Icons.remove_red_eye_outlined:Icons.visibility_off_outlined,color: Colors.orange,),
             onPressed: hit,

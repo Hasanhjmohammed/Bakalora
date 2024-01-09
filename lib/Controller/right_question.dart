@@ -9,6 +9,11 @@ class RightQuestion extends GetxController {
     questionNumber++;
     update();
   }
+  void ResetQuestionNumber(){
+
+    questionNumber=0;;
+    update();
+  }
 
 Color check=Colors.orange;
 IconData iconcheck=Icons.radio_button_checked_outlined;

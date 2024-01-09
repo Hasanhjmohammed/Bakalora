@@ -8,6 +8,7 @@ import 'package:bakalora/Widget/custom_circle.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:bakalora/Widget/Custom_textbutton.dart';
+
 class CreateAccount extends StatefulWidget {
   const CreateAccount({super.key});
 
@@ -16,17 +17,15 @@ class CreateAccount extends StatefulWidget {
 }
 
 class _CreateAccountState extends State<CreateAccount> {
-  Password password = Get.put(Password());
-GlobalKey<FormState> globalKey=GlobalKey<FormState>();
-TextEditingController name=TextEditingController();
-TextEditingController pass=TextEditingController();
-TextEditingController conficpass=TextEditingController();
+  GlobalKey<FormState> globalKey = GlobalKey<FormState>();
+  TextEditingController name = TextEditingController();
+  TextEditingController pass = TextEditingController();
+  TextEditingController conficpass = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    double width=MediaQuery.of(context).size.width;
+    double width = MediaQuery.of(context).size.width;
 
     return Scaffold(
-
       body: Container(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -35,25 +34,25 @@ TextEditingController conficpass=TextEditingController();
               Expanded(
                 flex: 2,
                 child: Container(
-                  child:   CustomCircl(
-                    path: 'images/img_5.png',
-                    value: Get.height/3.5, title: '',
-
-                    callback:()=>null,
+                  child: CustomCircl(
+                    path: 'assest/images/img_5.png',
+                    value: Get.height / 4,
+                    title: '',
+                    callback: () => null,
                   ),
                 ),
               ),
               Expanded(
                 flex: 4,
-                child:  Container(
+                child: Container(
                   child: Form(
-                  //  autovalidateMode: AutovalidateMode.always,
+                    //  autovalidateMode: AutovalidateMode.always,
                     key: globalKey,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                //   Spacer(),
+                        //   Spacer(),
                         CustomTextField(
                           value: name,
                           vali: (String? text) {
@@ -63,11 +62,11 @@ TextEditingController conficpass=TextEditingController();
                             } else
                               return null;
                           },
-                          hintText:'اسم المستخدم',
-                          inputtext:'kf',
-                          hit:()=>print('dd'),
+                          hintText: 'اسم المستخدم',
+                          inputtext: 'kf',
+                          hit: () => print('dd'),
                         ),
-                      Spacer(),
+                        Spacer(),
                         CustomTextField(
                           value: pass,
                           vali: (String? text) {
@@ -77,11 +76,11 @@ TextEditingController conficpass=TextEditingController();
                             } else
                               return null;
                           },
-                          hintText:' كلمة المرور',
-                          inputtext:'kf',
-                          hit:()=>print('ff'),
+                          hintText: ' كلمة المرور',
+                          inputtext: 'kf',
+                          hit: () => print('ff'),
                         ),
-                      Spacer(),
+                        Spacer(),
                         CustomTextField(
                           value: conficpass,
                           vali: (String? text) {
@@ -91,12 +90,11 @@ TextEditingController conficpass=TextEditingController();
                             } else
                               return null;
                           },
-                          hintText:'تأكيد كلمة المرور',
-                          inputtext:'kf',
-                          hit:()=>print('fff'),
+                          hintText: 'تأكيد كلمة المرور',
+                          inputtext: 'kf',
+                          hit: () => print('fff'),
                         ),
-                        Spacer(),
-
+                        const Spacer(),
                       ],
                     ),
                   ),
@@ -109,33 +107,46 @@ TextEditingController conficpass=TextEditingController();
               //       child:
               //     ),
               // ),
-              BottomSheet(onClosing: ()=>null, builder: (co)=> Column(
-                children: [
-                  CustomButtom(callback: () {
-                  if(globalKey.currentState!.validate())
-                  Navigator.of(context).push(
-                  MaterialPageRoute(builder: (_)=> WelcomeScreen(),),);
-                  else
-                  return null;
-                  } ,
-                      value:width, child: Text('إنشأ'), background: Colors.orange),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      CustomTextButton(
-                          callback :()=>null,
-                          color:Colors.white,
-                          value: ' لديك حساب ؟'
-                      ), CustomTextButton(
-                          callback :()=>Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_)=>SingIn())),
-                          color:Colors.orange,
-                          value: 'سجل دخولك'
-                      ),
-                    ],
-                  ),
-                ],
-              ),)
+              BottomSheet(
+                onClosing: () => null,
+                builder: (co) => Column(
+                  children: [
+                    CustomButtom(
+                        callback: () {
+                          if (globalKey.currentState!.validate()) {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (_) =>const  WelcomeScreen(),
+                              ),
+                            );
+                          } else
+                            return null;
+                        },
+                        value: width,
+                        background: Colors.orange,
+                      child:   Text('إنشأ',style: TextStyle(
+                          fontSize: 25,
+                          color: Colors.white,fontWeight: FontWeight.w200),),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        CustomTextButton(
+                            callback: () => null,
+                            color: Colors.white,
+                            value: ' لديك حساب ؟'),
+                        CustomTextButton(
+                            callback: () => Navigator.of(context)
+                                .pushReplacement(MaterialPageRoute(
+                                    builder: (_) => SingIn(),),),
+                            color: Colors.orange,
+                            value: 'سجل دخولك'),
+                      ],
+                    ),
+                  ],
+                ),
+              )
             ],
           ),
         ),

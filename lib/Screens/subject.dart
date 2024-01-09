@@ -22,8 +22,8 @@ class _SubjectScreenState extends State<SubjectScreen> {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
-      endDrawer: CustomDrawer(),
-      appBar: CustomAppBar(),
+      endDrawer:CustomDrawer(context),
+      appBar: CustomAppBar('المواد'),
       body: Container(
         child: Padding(
           padding: const EdgeInsets.only(top: 8, right: 8, left: 8,bottom: 30),

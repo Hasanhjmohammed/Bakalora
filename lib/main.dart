@@ -1,5 +1,5 @@
 
-import 'package:bakalora/Screens/text.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'Screens/Auth/sing_in.dart';
@@ -19,7 +19,11 @@ class MyApp extends StatelessWidget {
      // locale: Get.,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        fontFamily: 'Marhey',
         textTheme: TextTheme(
+          headlineMedium: TextStyle(
+            fontFamily: 'Trajan Pro'
+          ),
         ),
         iconTheme: IconThemeData(
           color: Colors.orange,
@@ -47,7 +51,7 @@ class MyApp extends StatelessWidget {
       // //  Locale('en','US'),
       //   Locale('ar','AE'),
       // ],
-      home: TestScreen(),
+      home: SingIn(),
     );
   }
 }
