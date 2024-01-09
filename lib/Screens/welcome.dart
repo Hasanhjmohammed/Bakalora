@@ -6,11 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:bakalora/Widget/custom_buttom.dart';
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
-
   @override
   State<WelcomeScreen> createState() => _WelcomeScreenState();
 }
-
 class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
@@ -28,17 +26,17 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               path: 'assest/images/img_5.png',
               value: height, title: '',
             callback:()=> Navigator.of(context).push(
-                MaterialPageRoute(builder: (con)=>BranchScreen())),
+                MaterialPageRoute(builder: (con)=>BranchScreen(),),),
             ),
             CustomButtom(
                 background: Colors.orange,
                 value:width,callback:()=>Navigator.of(context).push(
                 MaterialPageRoute(builder: (con)=>BranchScreen(),),),
-            child:Text('إبدأ',style: TextStyle(color: Colors.white,fontSize: 30))
+             child:Text('إبدأ',style: TextStyle(color: Colors.white,fontSize: 30))
             ),
           ],
         ),
-      )
+      ),
     );
   }
 }
