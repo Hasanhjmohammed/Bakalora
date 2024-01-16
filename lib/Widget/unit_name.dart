@@ -22,10 +22,10 @@ class UnitNameapp extends StatelessWidget {
      @required this.backgroundcolor,
 
    });
-
   @override
   Widget build(BuildContext context) {
-    return  InkWell(
+    return  GestureDetector(
+
       onTap: callback,
       child: Padding(
         padding: const EdgeInsets.all(5.0),
@@ -41,7 +41,9 @@ class UnitNameapp extends StatelessWidget {
             child: ListTile(
              // style:  Li
               tileColor: backgroundcolor,
-              leading:Icon(icon,color: Colors.white,),
+              leading:Icon(icon,
+                color: Colors.white,
+              ),
               title: Text('$title'),
             ),
           ),

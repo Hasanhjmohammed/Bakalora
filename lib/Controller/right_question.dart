@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-enum c{white,orange}
 
 class RightQuestion extends GetxController {
   int questionNumber=0;

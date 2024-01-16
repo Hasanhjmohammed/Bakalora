@@ -19,11 +19,13 @@ class CustomInfo extends StatelessWidget {
         child: Container(
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(3),
-              color: Colors.orange
+       color: Colors.orange
           ),
           width:width,
           height: height,
-          child:Icon(Icons.info_outline_rounded,color: Colors.white,),
+          child:Icon(Icons.info_outline_rounded,
+           color: Colors.white,
+          ),
         ),
       ),
     );

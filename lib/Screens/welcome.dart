@@ -1,9 +1,11 @@
+import 'package:bakalora/Constant/approute.dart';
 import 'package:bakalora/Screens/branch.dart';
 import 'package:bakalora/Widget/Custom_appBar.dart';
 import 'package:bakalora/Widget/custom_circle.dart';
 import 'package:bakalora/Widget/custom_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:bakalora/Widget/custom_buttom.dart';
+import 'package:get/get.dart';
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
   @override
@@ -25,13 +27,11 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             CustomCircl(
               path: 'assest/images/img_5.png',
               value: height, title: '',
-            callback:()=> Navigator.of(context).push(
-                MaterialPageRoute(builder: (con)=>BranchScreen(),),),
+            callback:()=>Get.toNamed(AppRoute.branch),
             ),
             CustomButtom(
-                background: Colors.orange,
-                value:width,callback:()=>Navigator.of(context).push(
-                MaterialPageRoute(builder: (con)=>BranchScreen(),),),
+             //   background: Colors.orange,
+                value:width,callback:()=>Get.toNamed(AppRoute.branch),
              child:Text('إبدأ',style: TextStyle(color: Colors.white,fontSize: 30))
             ),
           ],

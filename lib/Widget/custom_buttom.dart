@@ -11,13 +11,15 @@ class CustomButtom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  ElevatedButton(
-
         style: ElevatedButton.styleFrom(
           shape: RoundedRectangleBorder(
-            side:const  BorderSide(color: Colors.orange,width: 2),
+            side:const  BorderSide(
+             color: Colors.orange,
+                width: 2,
+            ),
             borderRadius: BorderRadius.circular(5.0),
           ),
-            backgroundColor:background,
+           backgroundColor:background,
             // maximumSize: Size(width, 100),
             minimumSize: Size(value!/1.5, value!/7)
         ),

@@ -14,7 +14,6 @@ class logoWidget extends StatelessWidget {
           backgroundColor: Colors.white,
           radius: 50,
           child: CircleAvatar(
-            backgroundColor: Colors.orange,
             radius: 45,
             child: CircleAvatar(
               radius: 40,

@@ -1,3 +1,4 @@
+import 'package:bakalora/Constant/approute.dart';
 import 'package:bakalora/Controller/password.dart';
 import 'package:bakalora/Screens/Auth/sing_in.dart';
 import 'package:bakalora/Screens/branch.dart';
@@ -137,9 +138,10 @@ class _CreateAccountState extends State<CreateAccount> {
                             color: Colors.white,
                             value: ' لديك حساب ؟'),
                         CustomTextButton(
-                            callback: () => Navigator.of(context)
-                                .pushReplacement(MaterialPageRoute(
-                                    builder: (_) => SingIn(),),),
+                            callback: ()=>Get.offNamed(AppRoute.singIn),
+                                // Navigator.of(context)
+                                // .pushReplacement(MaterialPageRoute(
+                                //     builder: (_) => SingIn(),),),
                             color: Colors.orange,
                             value: 'سجل دخولك'),
                       ],

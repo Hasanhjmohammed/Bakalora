@@ -23,10 +23,7 @@ class ContainerText extends StatelessWidget {
             child: SingleChildScrollView(
               child: Text('$value',
                 textAlign: TextAlign.center,
-                style:  TextStyle(
-                    fontSize:  width! * 0.05,
-                  fontFamily: 'Trajan Pro'
-                ),
+                style:  Theme.of(context).textTheme.bodyMedium
               ),
             ),
           ),

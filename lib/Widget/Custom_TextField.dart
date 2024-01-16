@@ -19,38 +19,37 @@ class CustomTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     Password password = Get.find();
     return TextFormField(
-      style: TextStyle(
-        fontSize: 20
-      ),
+      style: Theme.of(context).textTheme.labelMedium,
       controller: value,
       validator: vali,
             obscureText:inputtext!='h'? false:password.password,
-      cursorColor: Colors.orange,
        // autofocus: false,
         decoration: InputDecoration(
 
           suffix:inputtext!='h'?null: IconButton(
-            icon: Icon(password.password?Icons.remove_red_eye_outlined:Icons.visibility_off_outlined,color: Colors.orange,),
+            icon: Icon(password.password?Icons.remove_red_eye_outlined:Icons.visibility_off_outlined,
+             // color: Colors.orange,
+            ),
             onPressed: hit,
           ),
           hintText: '$hintText',
-          border: const UnderlineInputBorder(
-              borderSide: BorderSide(color: Colors.orange)
-          ),
-          focusedBorder:   const  UnderlineInputBorder(
-            borderSide: BorderSide(
-                width: 2,
-                color: Colors.orange),
-          ),
-          enabledBorder:  const UnderlineInputBorder(
-              borderSide: BorderSide(color: Colors.orange)
-          ),
-          disabledBorder:  const UnderlineInputBorder(
-            borderSide: BorderSide(color: Colors.orange),
-          ),
-          errorBorder: const UnderlineInputBorder(
-            borderSide: BorderSide(color: Colors.deepOrange),
-          ),
+          // border: const UnderlineInputBorder(
+          //     borderSide: BorderSide(color: Colors.orange)
+          // ),
+          // focusedBorder:   const  UnderlineInputBorder(
+          //   borderSide: BorderSide(
+          //       width: 2,
+          //       color: Colors.orange),
+          // ),
+          // enabledBorder:  const UnderlineInputBorder(
+          //     borderSide: BorderSide(color: Colors.orange)
+          // ),
+          // disabledBorder:  const UnderlineInputBorder(
+          //   borderSide: BorderSide(color: Colors.orange),
+          // ),
+          // errorBorder: const UnderlineInputBorder(
+          //   borderSide: BorderSide(color: Colors.deepOrange),
+          // ),
         ),
 
       );

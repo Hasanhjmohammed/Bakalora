@@ -1,6 +1,6 @@
 import 'package:bakalora/Widget/custom_buttom.dart';
 import 'package:flutter/material.dart';
-BiuldDialog(BuildContext contextDialog,String title,VoidCallback callback1,VoidCallback callback2,double value,Widget child1,Widget child2){
+ Future BiuldDialog(BuildContext contextDialog,String title,VoidCallback callback1,VoidCallback callback2,double value,Widget child1,Widget child2){
 
   return showDialog(context: contextDialog, builder: (builder)=>AlertDialog(
     title: Text('$title',textAlign: TextAlign.center,),

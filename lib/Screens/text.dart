@@ -36,6 +36,7 @@ class _TextScreenState extends State<TestScreen> {
         //   title: Text('اختبار العلوم',style: TextStyle(color: Colors.black),),
         // ),
         body: GetBuilder<RightQuestion>(builder: (con) {
+          print ('kk');
           final answers = Question[rightQuestion.questionNumber]['test'] as Map;
           return Column(
             children: [
@@ -53,9 +54,9 @@ class _TextScreenState extends State<TestScreen> {
                     Align(
                         alignment: Alignment.bottomLeft,
                         child: Padding(
-                          padding: const EdgeInsets.only(bottom: 0.0,left: 10),
+                          padding: const EdgeInsets.only(left: 10),
                           child: Text(' ${Question.length}  / ${rightQuestion.questionNumber+1}',
-                            style: TextStyle(fontWeight: FontWeight.w300,fontSize: 15),),
+                            style: Theme.of(context).textTheme.labelSmall),
                         ),)
                   ],
                 ),
@@ -88,17 +89,6 @@ class _TextScreenState extends State<TestScreen> {
                                         Icons.radio_button_checked_outlined);
                                   }
                               }
-                              // else {
-                              //   for (int j = 0; j < answers.length; j++)
-                              //     if (i == j) {
-                              //       ch = j;
-                              //       rightQuestion.ChangColorCheck(Colors.orange,
-                              //           Icons.radio_button_checked_outlined);
-                              //     }
-                              // }
-                              // else
-                              //   {
-                              //   }
                             }),
                     ],
                   ),
@@ -111,14 +101,7 @@ class _TextScreenState extends State<TestScreen> {
                     flex: 1,
                     child: CustomInfo(
                       callback: () => check == false
-                          ? Get.bottomSheet(
-                              BottomSheet(
-                                enableDrag: false,
-                                showDragHandle: false,
-                                onClosing: () => null,
-                                builder: (con) =>ContainerText(value:'حل السؤال', width: width)
-                              ),
-                            )
+                          ? tryQuestion(width)
                           : null,
                       width: width * 0.27,
                       height: height * 0.07,
@@ -132,12 +115,7 @@ class _TextScreenState extends State<TestScreen> {
                       callback: () {
                     if(ch==100)// لم اختر اجابة بعد
                      {
-                       Get.showSnackbar(const GetSnackBar(
-                         duration:Duration(seconds: 1),
-                           animationDuration: Duration(milliseconds: 500),
-                           backgroundColor: Colors.orange,
-                           snackPosition:SnackPosition.TOP,
-                         messageText: Text('من فضلك اختر اجابة'), ),);
+                       chooseAneswer();
                      }
                    else // اخترت اجابة معينة
                      {
@@ -171,58 +149,7 @@ class _TextScreenState extends State<TestScreen> {
                            check = true; // تفعيل الوظيفة الثانية للزر
                          }
                          else { // لا يوجد اسئلة
-                           showDialog(
-                             context: context,
-                             builder: (c) {
-                              double b=((marker*100/Question.length));
-                              print((marker*100/Question.length)/100);
-                               return  AlertDialog(
-                                 title: ListTile(
-                                   title: Text('النتيجة',textAlign: TextAlign.center,style: TextStyle(
-                                     color: Colors.orange,
-                                     fontSize: 30,
-                                     fontWeight: FontWeight.bold
-                                   ),),
-                                   subtitle: Text('الوحدة الاولى الدرس الاول ج 1',textAlign: TextAlign.center,),
-                                 ),
-                                 content: CircularPercentIndicator(
-                                   animation:true,
-                                   animationDuration: 1000,
-                                   radius: 60.0,
-                                   lineWidth: 8.0,
-                                   percent: (marker*100/Question.length)/100,
-                                   center: new Text("${b.toInt()}%"),
-                                   progressColor: marker >Question.length-marker ?Colors.green:Colors.red,
-                                 ),
-                                 actions: [
-                                   Row(mainAxisAlignment: MainAxisAlignment.center,
-                                     children: [
-                                       Text('  عدد الاسئلة الكلي  ',style: TextStyle(fontSize: 20),),
-                                       Text('${Question.length}',style: TextStyle(fontSize: 20),),
-                                     ],
-                                   ),
-                                   SizedBox(height: 50,),
-                                   Row(
-                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                     children: [
-                                       Text(' الاسئلة الصحيحة  ',),
-                                       Text('$marker',style: TextStyle(fontSize: 20)),
-                                       Spacer(),
-                                       Text(' الاسئلة الخاطئة   ',),
-                                       Text('${Question.length-marker}',style: TextStyle(fontSize: 20)),
-                                     ],
-                                   ),
-                                   //
-                                   // Row(
-                                   //   children: [
-                                   //     Text('عدد الاسئلة الخاطئة'),
-                                   //     Text('${Question.length-marker}'),
-                                   //   ],
-                                   // ),
-                                 ],
-                               );
-                             },
-                           );
+                           Results(context);
                          }
                        }
                      }
@@ -236,7 +163,7 @@ class _TextScreenState extends State<TestScreen> {
                       child: InkWell(
                         child: Icon(
                           check == true ? Icons.check : Icons.arrow_back,
-                          color: Colors.orange,
+                        color: Colors.orange,
                           size: 50,
                         ),
                       ),
@@ -250,7 +177,80 @@ class _TextScreenState extends State<TestScreen> {
       ),
     );
   }
-    Future<bool> showExitPopup() async {
+
+  Future<dynamic> tryQuestion(double width) {
+    return Get.bottomSheet(
+                            BottomSheet(
+                              enableDrag: false,
+                              showDragHandle: false,
+                              onClosing: () => null,
+                              builder: (con) =>ContainerText(value:'حل السؤال', width: width)
+                            ),
+                          );
+  }
+  SnackbarController chooseAneswer() {
+    return Get.showSnackbar(const GetSnackBar(
+                       duration:Duration(seconds: 1),
+                         animationDuration: Duration(milliseconds: 500),
+                         backgroundColor: Colors.orange,
+                         snackPosition:SnackPosition.TOP,
+                       messageText: Text('من فضلك اختر اجابة'), ),);
+  }
+  Future<dynamic> Results(BuildContext context) {
+    return showDialog(
+                           context: context,
+                           builder: (c) {
+                            double b=((marker*100/Question.length));
+                            print((marker*100/Question.length)/100);
+                             return  AlertDialog(
+                               title: const ListTile(
+                                 title: Text('النتيجة',textAlign: TextAlign.center,style:  TextStyle(
+                                   color: Colors.orange,
+                                   fontSize: 30,
+                                   fontWeight: FontWeight.bold
+                                 ),),
+                                 subtitle: Text('الوحدة الاولى الدرس الاول ج 1',textAlign: TextAlign.center,),
+                               ),
+                               content: CircularPercentIndicator(
+                                 animation:true,
+                                 animationDuration: 1000,
+                                 radius: 60.0,
+                                 lineWidth: 9.0,
+                                 percent: (marker*100/Question.length)/100,
+                                 center: new Text("${b.toInt()}%"),
+                                 progressColor: marker >Question.length-marker ?Colors.green:Colors.red,
+                               ),
+                               actions: [
+                                 Row(mainAxisAlignment: MainAxisAlignment.center,
+                                   children: [
+                                     Text('  عدد الاسئلة الكلي  ',style: TextStyle(fontSize: 20),),
+                                     Text('${Question.length}',style: TextStyle(fontSize: 20),),
+                                   ],
+                                 ),
+                                 SizedBox(height: 50,),
+                                 Row(
+                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                   children: [
+                                   Flexible(child: Text('الاسئلة الصحيحة'),),
+                                     Text('$marker',style: TextStyle(fontWeight: FontWeight.bold)),
+                                        SizedBox(width: 50,),
+                                     Flexible(child: Text('الاسئلة الخاطئة'),),
+                                     Text('${Question.length-marker}',style: TextStyle(fontWeight: FontWeight.bold)),
+                                   ],
+                                 ),
+                                 //
+                                 // Row(
+                                 //   children: [
+                                 //     Text('عدد الاسئلة الخاطئة'),
+                                 //     Text('${Question.length-marker}'),
+                                 //   ],
+                                 // ),
+                               ],
+                             );
+                           },
+                         );
+  }
+  Future<bool> showExitPopup() async {
       return await
       BiuldDialog(context, 'هل أنت متأكد من خروج؟', () {
         ch=100;

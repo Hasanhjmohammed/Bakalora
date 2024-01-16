@@ -1,5 +1,6 @@
 import 'package:bakalora/Constant/Branch.dart';
 import 'package:bakalora/Constant/Unites.dart';
+import 'package:bakalora/Constant/approute.dart';
 import 'package:bakalora/Screens/unit.dart';
 import 'package:bakalora/Widget/Custom_appBar.dart';
 import 'package:bakalora/Widget/custom_circle.dart';
@@ -7,6 +8,7 @@ import 'package:bakalora/Widget/custom_drawer.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class SubjectScreen extends StatefulWidget {
   List <Map<String,dynamic>>?sub;
@@ -44,11 +46,12 @@ class _SubjectScreenState extends State<SubjectScreen> {
                           path: widget.sub![index]['image'],
                           value: width / 1.2,
                           title: '${widget.sub![index]['title']}',
-                          callback: () => Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (con) => UnitScreenapp(sub: Brach_Sencess ),
-                            ),
-                          ),
+                        callback: ()=>Get.toNamed(AppRoute.unite)
+                          //     Navigator.of(context).push(
+                          //   MaterialPageRoute(
+                          //     builder: (con) => UnitScreenapp(sub: Brach_Sencess ),
+                          //   ),
+                          // ),
                         ),
                       ),
                     );

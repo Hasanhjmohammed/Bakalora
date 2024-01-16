@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 class ListTitleDrawer extends StatelessWidget {
   IconData ?myicon;
   String  ?title;
+
   VoidCallback ?callback;
 
-  ListTitleDrawer({@required this.myicon,@required this.title,@required this.callback});
+  ListTitleDrawer({@required this.myicon,@required this.title,@required this.callback,});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +13,7 @@ class ListTitleDrawer extends StatelessWidget {
       onTap: callback,
       child: Container(
         child: ListTile(
-          leading:Icon(myicon),
+          leading:Icon(myicon,color: Colors.orange,),
           title: Text(title!),
         ),
       ),

@@ -2,6 +2,5 @@ import 'dart:ui';
 
 TextStyle ?textStyle=TextStyle(
 
-
-    fontSize: 20,
+        fontSize: 20
 );

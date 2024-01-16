@@ -1,10 +1,13 @@
 import 'package:bakalora/Constant/Unites.dart';
+import 'package:bakalora/Constant/approute.dart';
 import 'package:bakalora/Screens/text.dart';
 import 'package:bakalora/Widget/Custom_appBar.dart';
 import 'package:bakalora/Widget/custom_buttom.dart';
 import 'package:bakalora/Widget/custom_drawer.dart';
+import 'package:bakalora/Widget/scan_alertDialog.dart';
 import 'package:bakalora/Widget/unit_name.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 class LessonScreen extends StatefulWidget {
   const LessonScreen({super.key});
 
@@ -43,22 +46,7 @@ class _LessonScreenState extends State<LessonScreen> {
                 wigth:width,
                 v:anim?0:width,
                 index:index,
-                callback: ()=>
-                    showDialog(context: context, builder:(co)=> AlertDialog(
-                      title: Text('ابدأ بالدراسة ',textAlign: TextAlign.center,),
-                      content: CustomButtom(
-                        background: Colors.orange,
-                        callback: (){
-                          Navigator.of(co).pop();
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => const TestScreen(),
-                            ),
-                          );
-                        },
-                        value: width/1.5, child: Text('أبدأ'),),
-                    ),
-                    ),
+                callback: ()=>scandialog(context, width,'ابدا الدراسة ',AppRoute.test,Icons.timer),
                 title: '${Unites_5[index]['title']}',
               ),
             ),

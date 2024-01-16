@@ -1,57 +1,64 @@
 
-
+import 'package:bakalora/Constant/styletext.dart';
+import 'package:bakalora/Screens/ec.dart';
+import 'package:bakalora/custom_font.dart';
+import 'package:bakalora/routes.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'Screens/Auth/sing_in.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
   runApp( MyApp());
 }
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
       locale: Locale('ar', 'AE'),
       fallbackLocale: Locale('ar', 'AE'),
-     // locale: Get.,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         fontFamily: 'Marhey',
-        textTheme: TextTheme(
-          headlineMedium: TextStyle(
-            fontFamily: 'Trajan Pro'
-          ),
+        textTheme:  TextTheme(
+         // bodySmall: bodySmall(),
+          labelSmall: labelSmall(),
+            bodyMedium :bodyMedium(),
+            labelMedium: labelMedium(),
+         // headlineMedium:
         ),
-        iconTheme: IconThemeData(
-          color: Colors.orange,
+        iconTheme: const IconThemeData(
+          color: Colors.white,
         ),
-        buttonTheme: ButtonThemeData(
+         buttonTheme: const ButtonThemeData(
           buttonColor: Colors.orange,
         ),
-         primaryColorDark: Colors.orange,
-         primarySwatch: Colors.orange,
-       colorScheme: ColorScheme.dark(
+          primaryColorDark: Colors.orange,
+          // primarySwatch: Colors.orange,
+          colorScheme: const ColorScheme.dark(
+            primaryContainer: Colors.orange,
+           onPrimaryContainer: Colors.orange,
+           background: Colors.orange,
+           onPrimary :Colors.white,
+           onSecondary:Colors.orange,
+           secondary:Colors.white,
            onSurface:Colors.orange,
-         error: Colors.deepOrange,
-
+           error: Colors.deepOrange,
+           onError: Colors.red,
            primary: Colors.orange
-
        ),
       ),
       title: 'Bakalora',
-      // localizationsDelegates: const [
-      //   GlobalMaterialLocalizations.delegate,
-      //   GlobalWidgetsLocalizations.delegate,
-      //   GlobalCupertinoLocalizations.delegate,
-      // ],
-      // supportedLocales:  [
-      // //  Locale('en','US'),
-      //   Locale('ar','AE'),
-      // ],
       home: SingIn(),
+      getPages: Routes,
     );
   }
+
+
 }

@@ -1,3 +1,4 @@
+import 'package:bakalora/Constant/approute.dart';
 import 'package:bakalora/Controller/password.dart';
 import 'package:bakalora/Screens/Auth/create_acount.dart';
 import 'package:bakalora/Screens/welcome.dart';
@@ -89,20 +90,20 @@ class _SingInState extends State<SingIn> {
                                 inputtext:'h',
                             hit:()=>password.ChangrPassword(),
                             ),
-                            Spacer(),
-                            CustomButtom(
-                                callback: () {
-                                  if(globalKey.currentState!.validate())
-                                    Navigator.of(context).push(
-                                      MaterialPageRoute(builder: (_)=> WelcomeScreen(),),);
-                                  else
-                                    return null;
-                                } ,
-                                value: Get.width,
-                                child: Text('تسجيل الدخول',style: TextStyle(
-                                    fontSize: 25,
-                                    color: Colors.white,fontWeight: FontWeight.w200),),
-                                background: Colors.orange),
+                            // Spacer(),
+                            // CustomButtom(
+                            //     callback: () {
+                            //       if(globalKey.currentState!.validate())
+                            //         Navigator.of(context).push(
+                            //           MaterialPageRoute(builder: (_)=> WelcomeScreen(),),);
+                            //       else
+                            //         return null;
+                            //     } ,
+                            //     value: Get.width,
+                            //     child: Text('تسجيل الدخول',style: TextStyle(
+                            //         fontSize: 25,
+                            //         color: Colors.white,fontWeight: FontWeight.w200),),
+                            //     background: Colors.orange),
                             Spacer(),
                           ],
                         ),
@@ -111,34 +112,51 @@ class _SingInState extends State<SingIn> {
                   }
                 ),
               ),
-              // Expanded(
-              //     flex: 1,
-              //     child: Container(
-              //       padding: EdgeInsets.all(10),
-              //     //  child:
-              //     ),
-              // )
+              BottomSheet(
+                onClosing: () => null,
+                builder: (co) => Column(
+                  children: [
+                    CustomButtom(
+                      callback: () {
+                        if (globalKey.currentState!.validate()) {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (_) =>const  WelcomeScreen(),
+                            ),
+                          );
+                        } else
+                          return null;
+                      },
+                      value: Get.width,
+                      background: Colors.orange,
+                      child:   Text('تسجيل دخول ',style: TextStyle(
+                          fontSize: 25,
+                          color: Colors.white,fontWeight: FontWeight.w200),),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [CustomTextButton(
+
+                        color: Colors.white,
+                        value: 'ليس لديك حساب ؟',
+                        callback: ()=>null,
+                      ),
+                        CustomTextButton(
+                          color: Colors.orange,
+                          value: 'أنشأ واحداً',
+                          callback: ()=>Get.offNamed(AppRoute.createaccount),
+
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              )
             ],
           ),
         ),
       ),
-      bottomSheet: BottomSheet(onClosing: ()=>null,builder: (c)=>Container(child:Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [CustomTextButton(
-
-          color: Colors.white,
-          value: 'ليس لديك حساب ؟',
-          callback: ()=>null,
-        ),
-          CustomTextButton(
-            color: Colors.orange,
-            value: 'أنشأ واحداً',
-            callback: ()=>Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_)=>CreateAccount(),),
-            ),
-          ),
-        ],
-      ),),)
     );
   }
 }

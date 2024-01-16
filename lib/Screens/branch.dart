@@ -1,9 +1,11 @@
 import 'package:bakalora/Constant/Branch.dart';
+import 'package:bakalora/Constant/approute.dart';
 import 'package:bakalora/Screens/subject.dart';
 import 'package:bakalora/Widget/Custom_appBar.dart';
 import 'package:bakalora/Widget/custom_circle.dart';
 import 'package:bakalora/Widget/custom_drawer.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class BranchScreen extends StatefulWidget {
   const BranchScreen({super.key});
@@ -34,16 +36,24 @@ class _BranchScreenState extends State<BranchScreen> {
                   flex: 1,
                   child: CustomCircl(
                     path: 'assest/images/img.png',
-                    value: height/2,title: 'أدبي',callback: ()=>Navigator.of(context).push(
-                      MaterialPageRoute(builder: (con)=>SubjectScreen(sub:Brach_Lib))),),
+                    value: height/2,title: 'أدبي',callback: ()=>Get.toNamed(AppRoute.subject)
+                  //     Navigator.of(context).push(
+                  //     MaterialPageRoute(builder: (con)=>SubjectScreen(sub:Brach_Lib),
+                  //     ),
+                  // ),
+            ),
                 ),
                 Expanded(
                   flex: 1,
                   child: CustomCircl(
                     path: 'assest/images/img_1.png',
                     value:  height/2,
-                    title: 'علمي',callback: ()=>Navigator.of(context).push(
-                      MaterialPageRoute(builder: (con)=>SubjectScreen(sub: Brach_Sencess,))),),
+                    title: 'علمي',callback: ()=>Get.toNamed(AppRoute.subject)
+                  //     Navigator.of(context).push(
+                  //     MaterialPageRoute(builder: (con)=>SubjectScreen(sub: Brach_Sencess,),
+                  //     ),
+                  // ),
+                ),
                 ),
               ],
             ),

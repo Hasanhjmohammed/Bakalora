@@ -82,6 +82,7 @@ CustomDrawer(BuildContext context) {
                     Uri.parse(("tel:0996807325"),
                     ),
                 ),),
+
                 ListTitleDrawer(
                     myicon: Icons.support, title: 'راسلنا',callback: ()=>UrlLauncher.launchUrl(Uri.parse(('sms:0996807325'),),),),
               ],
