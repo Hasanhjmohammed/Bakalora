@@ -14,11 +14,6 @@ Future<dynamic> scandialog(BuildContext context, double width,String title,Strin
         callback: () {
           Get.back();
           Get.toNamed(Route);
-          // Navigator.of(context).push(
-          //   MaterialPageRoute(
-          //     builder: (context) => LessonScreen(),
-          //   ),
-          // );
         },
         value: width / 1.5,
         child: Icon(iconData),

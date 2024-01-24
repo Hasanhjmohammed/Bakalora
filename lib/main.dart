@@ -1,19 +1,11 @@
 
-import 'package:bakalora/Constant/styletext.dart';
-import 'package:bakalora/Screens/ec.dart';
-import 'package:bakalora/custom_font.dart';
 import 'package:bakalora/routes.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'Screens/Auth/sing_in.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-    DeviceOrientation.portraitDown,
-  ]);
   runApp( MyApp());
 }
 class MyApp extends StatelessWidget {
@@ -27,11 +19,6 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'Marhey',
         textTheme:  TextTheme(
-         // bodySmall: bodySmall(),
-          labelSmall: labelSmall(),
-            bodyMedium :bodyMedium(),
-            labelMedium: labelMedium(),
-         // headlineMedium:
         ),
         iconTheme: const IconThemeData(
           color: Colors.white,
@@ -40,18 +27,17 @@ class MyApp extends StatelessWidget {
           buttonColor: Colors.orange,
         ),
           primaryColorDark: Colors.orange,
-          // primarySwatch: Colors.orange,
           colorScheme: const ColorScheme.dark(
             primaryContainer: Colors.orange,
            onPrimaryContainer: Colors.orange,
-           background: Colors.orange,
+           background: Colors.black,
            onPrimary :Colors.white,
            onSecondary:Colors.orange,
            secondary:Colors.white,
            onSurface:Colors.orange,
            error: Colors.deepOrange,
            onError: Colors.red,
-           primary: Colors.orange
+           primary: Colors.orange,
        ),
       ),
       title: 'Bakalora',
@@ -59,6 +45,4 @@ class MyApp extends StatelessWidget {
       getPages: Routes,
     );
   }
-
-
 }

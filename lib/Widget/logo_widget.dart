@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 
 class logoWidget extends StatelessWidget {
-  const logoWidget({
-    super.key,
+ double ?width;
+ logoWidget({
+   @required this.width
   });
   @override
   Widget build(BuildContext context) {
@@ -12,11 +13,11 @@ class logoWidget extends StatelessWidget {
         padding: const EdgeInsets.only(bottom: 8.0),
         child: CircleAvatar(
           backgroundColor: Colors.white,
-          radius: 50,
+          radius: width,
           child: CircleAvatar(
-            radius: 45,
+            radius: width!<100?width!-5:width!-10,
             child: CircleAvatar(
-              radius: 40,
+              radius: width!<100?width!-10:width!-20,
               backgroundImage: AssetImage(
                 'assest/images/img_5.png',
               ),

@@ -1,8 +1,11 @@
+import 'dart:async';
+
 import 'package:bakalora/Constant/approute.dart';
 import 'package:bakalora/Screens/branch.dart';
 import 'package:bakalora/Widget/Custom_appBar.dart';
 import 'package:bakalora/Widget/custom_circle.dart';
 import 'package:bakalora/Widget/custom_drawer.dart';
+import 'package:bakalora/Widget/logo_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:bakalora/Widget/custom_buttom.dart';
 import 'package:get/get.dart';
@@ -12,28 +15,43 @@ class WelcomeScreen extends StatefulWidget {
   State<WelcomeScreen> createState() => _WelcomeScreenState();
 }
 class _WelcomeScreenState extends State<WelcomeScreen> {
+  Timer ?timer;
+  @override
+void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    timer!.cancel();
+   // print('aa');
+  }
+
+
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    print(timer);
+   timer= Timer.periodic(Duration(seconds: 2), (timer) {
+     print('r');
+     Get.offAndToNamed(AppRoute.branch);
+   //  Get.toNamed(AppRoute.branch);
+   });
+  }
   @override
   Widget build(BuildContext context) {
     double height=MediaQuery.of(context).size.height;
     double width=MediaQuery.of(context).size.width;
     return Scaffold(
-     endDrawer: CustomDrawer(context),
-      appBar: CustomAppBar(''),
       body: Center(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            CustomCircl(
-              path: 'assest/images/img_5.png',
-              value: height, title: '',
-            callback:()=>Get.toNamed(AppRoute.branch),
+            Expanded(
+                flex: 3,
+                child: logoWidget(width: 160,),
             ),
-            CustomButtom(
-             //   background: Colors.orange,
-                value:width,callback:()=>Get.toNamed(AppRoute.branch),
-             child:Text('إبدأ',style: TextStyle(color: Colors.white,fontSize: 30))
-            ),
+            Expanded(
+                flex: 1,
+                child: Text('بكلوريا',style: TextStyle(fontSize: 40,color: Colors.orange),),)
           ],
         ),
       ),

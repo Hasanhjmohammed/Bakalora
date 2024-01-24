@@ -20,7 +20,6 @@ class CustomButtom extends StatelessWidget {
             borderRadius: BorderRadius.circular(5.0),
           ),
            backgroundColor:background,
-            // maximumSize: Size(width, 100),
             minimumSize: Size(value!/1.5, value!/7)
         ),
         onPressed: callback,

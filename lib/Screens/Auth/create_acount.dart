@@ -115,11 +115,7 @@ class _CreateAccountState extends State<CreateAccount> {
                     CustomButtom(
                         callback: () {
                           if (globalKey.currentState!.validate()) {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (_) =>const  WelcomeScreen(),
-                              ),
-                            );
+                         Get.toNamed(AppRoute.welcom);
                           } else
                             return null;
                         },

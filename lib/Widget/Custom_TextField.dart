@@ -19,7 +19,7 @@ class CustomTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     Password password = Get.find();
     return TextFormField(
-      style: Theme.of(context).textTheme.labelMedium,
+      style: TextStyle(fontSize: 20),
       controller: value,
       validator: vali,
             obscureText:inputtext!='h'? false:password.password,
@@ -33,23 +33,6 @@ class CustomTextField extends StatelessWidget {
             onPressed: hit,
           ),
           hintText: '$hintText',
-          // border: const UnderlineInputBorder(
-          //     borderSide: BorderSide(color: Colors.orange)
-          // ),
-          // focusedBorder:   const  UnderlineInputBorder(
-          //   borderSide: BorderSide(
-          //       width: 2,
-          //       color: Colors.orange),
-          // ),
-          // enabledBorder:  const UnderlineInputBorder(
-          //     borderSide: BorderSide(color: Colors.orange)
-          // ),
-          // disabledBorder:  const UnderlineInputBorder(
-          //   borderSide: BorderSide(color: Colors.orange),
-          // ),
-          // errorBorder: const UnderlineInputBorder(
-          //   borderSide: BorderSide(color: Colors.deepOrange),
-          // ),
         ),
 
       );

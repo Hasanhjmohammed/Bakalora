@@ -9,8 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class UnitScreenapp extends StatefulWidget {
-  List<Map<String, dynamic>>? sub;
-  UnitScreenapp({@required this.sub});
+  List<Map<String, dynamic>>? sub=Get.arguments;
+  UnitScreenapp({super.key});
   @override
   State<UnitScreenapp> createState() => _UnitScreenState();
 }
@@ -29,8 +29,6 @@ class _UnitScreenState extends State<UnitScreenapp> {
 
   @override
   Widget build(BuildContext context) {
-    print('gggggggg');
-    double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
       endDrawer: CustomDrawer(context),
@@ -58,6 +56,4 @@ class _UnitScreenState extends State<UnitScreenapp> {
       ),
     );
   }
-
-
 }

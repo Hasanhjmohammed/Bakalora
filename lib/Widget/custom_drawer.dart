@@ -1,28 +1,29 @@
 import 'package:bakalora/Constant/Unites.dart';
+import 'package:bakalora/Constant/approute.dart';
 import 'package:bakalora/Widget/Custom_listTitle.dart';
 import 'package:bakalora/Widget/custom_alertDialog.dart';
 import 'package:bakalora/Widget/logo_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
-import 'package:url_launcher/url_launcher_string.dart';
+
 CustomDrawer(BuildContext context) {
-  double height = MediaQuery.of(context).size.height;
   double width = MediaQuery.of(context).size.width;
   return Drawer(
     child: Column(
       children: [
         Container(
           width: double.infinity,
-          child: const Column(
+          child:  Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               DrawerHeader(
-                decoration: const BoxDecoration(color: Colors.orange),
+                decoration:  BoxDecoration(color: Colors.orange),
                 child: Stack(
                   children: [
                     Align(
                       alignment: Alignment.topLeft,
-                      child: logoWidget(),
+                      child: logoWidget(width:50),
                     ),
                     Align(
                       alignment: Alignment.bottomRight,
@@ -59,7 +60,11 @@ CustomDrawer(BuildContext context) {
                     ],
                   ),
                   ListTitleDrawer(
-                      myicon: Icons.favorite_border, title: 'المفضلة'),
+                      myicon: Icons.favorite_border, title: 'المفضلة',
+                  ),
+                  ListTitleDrawer(
+                      callback: ()=>Get.offAndToNamed(AppRoute.aboutapplication),
+                      myicon:Icons.info_outline_rounded, title: 'حول التطبيق'),
                 ],
               ),
             ),
@@ -77,14 +82,26 @@ CustomDrawer(BuildContext context) {
                 ListTitleDrawer(
                   myicon: Icons.settings,
                   title: 'الاعدادت',
+                  callback: ()=>Get.offAndToNamed(AppRoute.setting),
                 ),
-                ListTitleDrawer(myicon: Icons.call, title: 'اتصل بنا',callback: ()=>UrlLauncher.launchUrl(
-                    Uri.parse(("tel:0996807325"),
-                    ),
-                ),),
-
                 ListTitleDrawer(
-                    myicon: Icons.support, title: 'راسلنا',callback: ()=>UrlLauncher.launchUrl(Uri.parse(('sms:0996807325'),),),),
+                  myicon: Icons.call,
+                  title: 'اتصل بنا',
+                  callback: () => UrlLauncher.launchUrl(
+                    Uri.parse(
+                      ("tel:0996807325"),
+                    ),
+                  ),
+                ),
+                ListTitleDrawer(
+                  myicon: Icons.support,
+                  title: 'راسلنا',
+                  callback: () => UrlLauncher.launchUrl(
+                    Uri.parse(
+                      ('sms:0996807325'),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
@@ -103,20 +120,27 @@ CustomDrawer(BuildContext context) {
                   title: 'سجل خروجك',
                   callback: () =>
                       BiuldDialog(context, 'هل أنت متأكد من خروج؟', () {
-                    Navigator.of(context).pop();
+                    Get.back();
                   }, () {
-                    Navigator.of(context).pop();
+                    Get.back();
                   }, width / 2.5, Text('نعم'), Text('لا')),
                 ),
                 ListTitleDrawer(
                   myicon: Icons.no_accounts_sharp,
                   title: 'احذف حسابك',
-                  callback: () =>
-                      BiuldDialog(context , 'هل أنت متأكد من حذف حسابك ؟', () {
-                    Navigator.of(context).pop();
-                  }, () {
-                    Navigator.of(context).pop();
-                  }, width / 2.5, Text('نعم'), Text('لا'),),
+                  callback: () => BiuldDialog(
+                    context,
+                    'هل أنت متأكد من حذف حسابك ؟',
+                    () {
+                      Get.back();
+                    },
+                    () {
+                      Get.back();
+                    },
+                    width / 2.5,
+                    Text('نعم'),
+                    Text('لا'),
+                  ),
                 ),
               ],
             ),

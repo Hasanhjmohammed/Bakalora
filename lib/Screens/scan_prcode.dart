@@ -3,7 +3,6 @@ import 'dart:io';
 
 import 'package:bakalora/Constant/approute.dart';
 import 'package:bakalora/Controller/barcode.dart';
-import 'package:bakalora/Screens/lessons.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -38,32 +37,32 @@ class _QRViewExampleState extends State<QRViewScreen> {
         print(
             'Barcode Type: ${describeEnum(  barcodeScan.barcode!.format)}   Data: ${ barcodeScan.barcode!.code}');
     //});
-    var scanArea = (MediaQuery.of(context).size.width < 400 ||
-            MediaQuery.of(context).size.height < 400)
-        ? 100.0
-        : 250.0;
+    var scanArea =  MediaQuery.of(context).size.width/2;
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
         //backgroundColor: Colors.black38,
         leading: PopupMenuButton<event>(
           onSelected: (va) async{
-            if (va == event.Flash)  await barcodeScan.controller?.toggleFlash();
+            if (va == event.Flash) await barcodeScan.controller?.toggleFlash();
              else if  (va==event.Camera_facing) await barcodeScan.controller?.flipCamera();
-            else if  (va==event.push)  Get.toNamed(AppRoute.lessons);
+            else if  (va==event.push)  {
+          // print(f);
+              Get.offAndToNamed(AppRoute.lessons);
+            }
           },
           itemBuilder: (_) => [
            const  PopupMenuItem(
-              child: Text('Flash'),
+              child: Text('تشغيل الكشاف'),
               value: event.Flash,
               // onTap: ()=>Get.toNamed(AppRoute.lessons),
             ),
            const  PopupMenuItem(
-              child: Text('Camera_facing'),
+              child: Text('قلب الكميرا '),
               value: event.Camera_facing,
             ),
             const  PopupMenuItem(
-              child: Text('push'),
+              child: Text('انتقال '),
               value: event.push,
             ),
           ],
@@ -101,7 +100,7 @@ class _QRViewExampleState extends State<QRViewScreen> {
               child: Text(
                 'أدخل كلمة السر بحال تعطل الكميرا',
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.labelMedium,
+                style: TextStyle(fontSize: 15),
               ),
             ),
             subtitle: Padding(
@@ -113,7 +112,7 @@ class _QRViewExampleState extends State<QRViewScreen> {
                 },
                 textAlign: TextAlign.left,
                 cursorColor: Colors.orange,
-                style: Theme.of(context).textTheme.labelMedium,
+                style: TextStyle(fontSize: 20),
                 decoration: InputDecoration(
                     hintText: 'Code_number',
                     border: OutlineInputBorder(),
@@ -122,7 +121,8 @@ class _QRViewExampleState extends State<QRViewScreen> {
                       borderSide:
                       BorderSide(color: Colors.orange, width: 1),
                     ),
-                    filled: true),
+                    filled: true,
+                ),
               ),
             ),
           )),
@@ -145,6 +145,7 @@ class _QRViewExampleState extends State<QRViewScreen> {
     // });
     controller.scannedDataStream.listen((scanData) {
       barcodeScan.ChangResulte(scanData);
+      print(scanData.code);
       // setState(() {
       //   result = scanData;
       // });

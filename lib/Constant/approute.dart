@@ -10,4 +10,6 @@ class AppRoute{
   static String welcom='/welcom';
   static String unite='/unite';
   static String qrViewScreen ='/qrViewScreen';
+  static String setting  ='/setting';
+  static String aboutapplication  ='/aboutapplication';
 }

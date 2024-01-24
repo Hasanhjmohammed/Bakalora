@@ -25,23 +25,22 @@ class UnitNameapp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  GestureDetector(
-
       onTap: callback,
       child: Padding(
         padding: const EdgeInsets.all(5.0),
         child: Card(
           child: AnimatedContainer(
             curve: Curves.easeInOut,
-            duration: Duration(milliseconds: 300+ (index! * 200)),
+            duration: Duration(milliseconds: 200+ (index! * 200)),
             transform: Matrix4.translationValues(v!, 0, 0),
             decoration: BoxDecoration(
               //  color: Colors.orange,
-                border: Border.all(color:color!)
+                border: Border.all(color:color!),
             ),
             child: ListTile(
-             // style:  Li
               tileColor: backgroundcolor,
-              leading:Icon(icon,
+              leading:Icon(
+                icon,
                 color: Colors.white,
               ),
               title: Text('$title'),

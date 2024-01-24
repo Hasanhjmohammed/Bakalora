@@ -3,6 +3,7 @@ class ContainerText extends StatelessWidget {
   String ?value;
   double ?width;
    ContainerText({
+     super.key,
     @required this.value,
      @required this.width,
 });
@@ -23,7 +24,7 @@ class ContainerText extends StatelessWidget {
             child: SingleChildScrollView(
               child: Text('$value',
                 textAlign: TextAlign.center,
-                style:  Theme.of(context).textTheme.bodyMedium
+                style: TextStyle(fontSize: 20),
               ),
             ),
           ),

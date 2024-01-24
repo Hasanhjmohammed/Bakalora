@@ -1,7 +1,5 @@
 import 'package:bakalora/Constant/approute.dart';
 import 'package:bakalora/Controller/password.dart';
-import 'package:bakalora/Screens/Auth/create_acount.dart';
-import 'package:bakalora/Screens/welcome.dart';
 import 'package:bakalora/Widget/Custom_TextField.dart';
 import 'package:bakalora/Widget/Custom_textbutton.dart';
 import 'package:bakalora/Widget/custom_buttom.dart';
@@ -25,11 +23,11 @@ class _SingInState extends State<SingIn> {
   }
 
   @override
+  GlobalKey<FormState> globalKey=GlobalKey<FormState>();
+  Password password = Get.put(Password());
+  TextEditingController name=TextEditingController();
+  TextEditingController pass=TextEditingController();
   Widget build(BuildContext context) {
-    Password password = Get.put(Password());
-    GlobalKey<FormState> globalKey=GlobalKey<FormState>();
-    TextEditingController name=TextEditingController();
-    TextEditingController pass=TextEditingController();
     return Scaffold(
       body: Container(
         child: Padding(
@@ -119,15 +117,16 @@ class _SingInState extends State<SingIn> {
                     CustomButtom(
                       callback: () {
                         if (globalKey.currentState!.validate()) {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (_) =>const  WelcomeScreen(),
-                            ),
-                          );
-                        } else
-                          return null;
+                          Get.toNamed(AppRoute.welcom);
+                          // Navigator.of(context).push(
+                          //   MaterialPageRoute(
+                          //     builder: (_) =>const  WelcomeScreen(),
+                          //   ),
+                          // );
+                         } else
+                           return null;
                       },
-                      value: Get.width,
+                      value:MediaQuery.of(context).size.width,
                       background: Colors.orange,
                       child:   Text('تسجيل دخول ',style: TextStyle(
                           fontSize: 25,
@@ -136,23 +135,22 @@ class _SingInState extends State<SingIn> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [CustomTextButton(
-
+                      children: [
+                        CustomTextButton(
                         color: Colors.white,
                         value: 'ليس لديك حساب ؟',
-                        callback: ()=>null,
+                        callback: ()=>null
                       ),
                         CustomTextButton(
                           color: Colors.orange,
                           value: 'أنشأ واحداً',
                           callback: ()=>Get.offNamed(AppRoute.createaccount),
-
                         ),
                       ],
                     ),
                   ],
                 ),
-              )
+              ),
             ],
           ),
         ),

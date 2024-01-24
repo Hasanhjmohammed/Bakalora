@@ -10,7 +10,7 @@ class RightQuestion extends GetxController {
   }
   void ResetQuestionNumber(){
 
-    questionNumber=0;;
+    questionNumber=0;
     update();
   }
 

@@ -1,4 +1,4 @@
-import 'package:bakalora/Screens/subject.dart';
+
 import 'package:flutter/material.dart';
 
 class CustomCircl extends StatelessWidget {
@@ -12,7 +12,6 @@ class CustomCircl extends StatelessWidget {
      @required this.title,
      @required this.path
    });
-
   @override
   Widget build(BuildContext context) {
     return  Column(
@@ -29,7 +28,6 @@ class CustomCircl extends StatelessWidget {
                 radius:(value!/5)-(value!/5*0.05),
                 backgroundImage: AssetImage('$path'),
               ),
-              //  backgroundColor: Colors.orange,
             ),
           ),
         ),
