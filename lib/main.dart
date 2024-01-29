@@ -1,4 +1,5 @@
 
+import 'package:bakalora/Screens/ec.dart';
 import 'package:bakalora/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

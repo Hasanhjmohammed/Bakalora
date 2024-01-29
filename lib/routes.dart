@@ -7,6 +7,7 @@ import 'package:bakalora/Screens/Auth/create_acount.dart';
 import 'package:bakalora/Screens/Auth/sing_in.dart';
 import 'package:bakalora/Screens/branch.dart';
 import 'package:bakalora/Screens/lessons.dart';
+import 'package:bakalora/Screens/mapscreen.dart';
 import 'package:bakalora/Screens/scan_prcode.dart';
 import 'package:bakalora/Screens/setting.dart';
 import 'package:bakalora/Screens/subject.dart';
@@ -27,4 +28,5 @@ List<GetPage<dynamic>>?Routes=[
   GetPage(name: AppRoute.qrViewScreen, page: ()=>QRViewScreen()),
   GetPage(name: AppRoute.setting, page: ()=> Setting(),),
   GetPage(name: AppRoute.aboutapplication, page: ()=> AboutApplication(),),
+  GetPage(name: AppRoute.map, page: ()=>MapScreen(),),
 ];

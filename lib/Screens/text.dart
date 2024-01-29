@@ -1,16 +1,21 @@
-import 'package:bakalora/Controller/favorite.dart';
-import 'package:bakalora/Controller/right_question.dart';
-import 'package:bakalora/Widget/container_text.dart';
+
+import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:bakalora/Widget/custom_alertDialog.dart';
+import 'package:bakalora/Controller/right_question.dart';
+import 'package:bakalora/Constant/questionlist.dart';
+import 'package:bakalora/Widget/container_text.dart';
 import 'package:bakalora/Widget/custom_buttom.dart';
+import 'package:bakalora/Controller/favorite.dart';
 import 'package:bakalora/Widget/custom_info.dart';
 import 'package:bakalora/Widget/unit_name.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:audioplayers/audioplayers.dart';
+import 'package:vibration/vibration.dart';
 import 'package:flutter/material.dart';
-import 'package:bakalora/Constant/questionlist.dart';
 import 'package:get/get.dart';
-import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class TestScreen extends StatefulWidget {
+
   TestScreen({super.key});
 
   @override
@@ -18,8 +23,10 @@ class TestScreen extends StatefulWidget {
 }
 
 class _TextScreenState extends State<TestScreen> {
+  final player = AudioPlayer();
+  static AudioCache paly=AudioCache();
   double height = Get.size.height;
-  double width = Get.size.width;
+  double width  = Get.size.width;
   int ch = 100;
   int marker = 0;
   bool check = true;
@@ -133,7 +140,7 @@ class _TextScreenState extends State<TestScreen> {
                       child:
                       CustomButtom(
                         background: Colors.black12,
-                        callback: () {
+                        callback: () async{
                           if (ch == 100) // لم اختر اجابة بعد
                           {
                             chooseAneswer();
@@ -145,11 +152,14 @@ class _TextScreenState extends State<TestScreen> {
                                   Question[rightQuestion.questionNumber]
                                       ['right']) // الاجابة المختارة هي الصحيحة
                               {
+                             //   await player.play(UrlSource('https://www.storyblocks.com/audio/stock/feedback-correct-right-answer-hqn83raddkgjl8nn8.html?preview=1'));
+                                paly.loadAsset('assest/music/right_click.mp3');
                                 marker++; // زائد واحدة للنتيجة
                                 rightQuestion.ChangColorCheck(
                                     Colors.green,
                                     Icons.check_circle); // غير الوان الاجابة الصحيحة
                               } else {
+                                Vibration.vibrate(duration: 200);
                                 // الاجابة المختارة خطأ
                                 for (int i = 0; i < answers.length; i++) {
                                   if (answers['${i + 1}'] ==
@@ -329,4 +339,5 @@ class _TextScreenState extends State<TestScreen> {
         ) ??
         false; //if showDialouge had returned null, then return false
   }
+
 }

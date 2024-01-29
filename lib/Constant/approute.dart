@@ -12,4 +12,5 @@ class AppRoute{
   static String qrViewScreen ='/qrViewScreen';
   static String setting  ='/setting';
   static String aboutapplication  ='/aboutapplication';
+  static String map  ='/map';
 }
